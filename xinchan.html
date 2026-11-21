@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>koleksi Xinchan</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #ffffff;
+            min-height: 100vh;
+            color: #000000;
+            padding: 40px 20px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #000000;
+                color: #ffffff;
+            }
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid #ffffff;
+            margin: 0 auto 16px;
+            display: block;
+            object-fit: cover;
+            object-position: center top;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .profile-img {
+                border-color: #ffffff;
+                box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        .username {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #2c2c2c;
+        }
+
+        .bio {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 12px;
+        }
+
+        .verified {
+            display: inline-block;
+            margin-bottom: 16px;
+            font-size: 12px;
+            color: #87d7ff;
+            background: #f5f5f5;
+            padding: 5px 14px;
+            border-radius: 999px;
+            border: 1px solid #e5e5e5;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .username {
+                color: #d2d2d2;
+            }
+
+            .bio {
+                color: #e7e7e7;
+            }
+
+            .verified {
+                color: #ffffff;
+                background: #1a1a1a;
+                border-color: #333333;
+            }
+        }
+
+
+        .ad-space {
+            background: #f5f5f5;
+            border: 1px dashed #e5e5e5;
+            border-radius: 12px;
+            padding: 12px;
+            text-align: center;
+            margin-bottom: 24px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .ad-placeholder {
+            color: #999999;
+            font-size: 13px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .ad-space {
+                background: #000000;
+                border-color: #000000;
+            }
+
+            .ad-placeholder {
+                color: #666666;
+            }
+        }
+
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 24px;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #f5f5f5;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 14px 20px;
+            color: #000000;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            min-height: 50px;
+        }
+
+        .link-item:hover {
+            background: #eeeeee;
+            border-color: #d4d4d4;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .link-item {
+                background: #1a1a1a;
+                border-color: #333333;
+                color: #ffffff;
+            }
+
+            .link-item:hover {
+                background: #262626;
+                border-color: #404040;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        .link-item:active {
+            transform: translateY(0);
+        }
+
+        .link-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .link-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .link-text {
+            flex: 1;
+        }
+
+
+        .telegram-link {
+            border-color: #e5e5e5;
+        }
+
+        .telegram-link:hover {
+            background: #e8f5fc;
+            border-color: #0088cc;
+            box-shadow: 0 4px 12px rgba(0, 136, 204, 0.2);
+        }
+
+        .telegram-link .link-icon svg {
+            color: #0088cc;
+        }
+
+
+        .youtube-link {
+            border-color: #e5e5e5;
+        }
+
+        .youtube-link:hover {
+            background: #ffebee;
+            border-color: #ff0000;
+            box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
+        }
+
+        .youtube-link .link-icon svg {
+            color: #ff0000;
+        }
+
+
+        .main-link {
+            border: 2px solid #d4d4d4;
+            background: #f5f5f5;
+        }
+
+        .main-link:hover {
+            border-color: #000000;
+            background: #eeeeee;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .main-link .link-icon svg {
+            color: #000000;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .telegram-link {
+                border-color: #333333;
+            }
+
+            .telegram-link:hover {
+                background: #1a1a1a;
+                border-color: #0088cc;
+                box-shadow: 0 4px 12px rgba(0, 136, 204, 0.3);
+            }
+
+            .youtube-link {
+                border-color: #333333;
+            }
+
+            .youtube-link:hover {
+                background: #1a1a1a;
+                border-color: #ff0000;
+                box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3);
+            }
+
+            .main-link {
+                border-color: #404040;
+                background: #1a1a1a;
+            }
+
+            .main-link:hover {
+                border-color: #ffffff;
+                background: #262626;
+                box-shadow: 0 6px 16px rgba(255, 255, 255, 0.1);
+            }
+
+            .main-link .link-icon svg {
+                color: #ffffff;
+            }
+        }
+
+
+        .notepad-box {
+            background: #f5f5f5;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            padding: 14px;
+            margin-bottom: 10px;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .notepad-box {
+                background: #1a1a1a;
+                border-color: #333333;
+            }
+        }
+
+        .notepad-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .notepad-header {
+                border-color: #333333;
+            }
+        }
+
+        .notepad-icon {
+            width: 18px;
+            height: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .notepad-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .notepad-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #000000;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .notepad-title {
+                color: #ffffff;
+            }
+        }
+
+        .notepad-links {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .notepad-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            background: #ffffff;
+            border: 1px solid #e5e5e5;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #0066cc;
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .notepad-link:hover {
+            background: #f0f7ff;
+            border-color: #0066cc;
+            transform: translateX(3px);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .notepad-link {
+                background: #262626;
+                border-color: #333333;
+                color: #3b82f6;
+            }
+
+            .notepad-link:hover {
+                background: #1a2332;
+                border-color: #3b82f6;
+            }
+        }
+
+        .notepad-link-icon {
+            display: none;
+        }
+
+        .notepad-link-text {
+            flex: 1;
+            font-size: 13px;
+            word-break: break-all;
+        }
+
+        .notepad-link-arrow {
+            display: none;
+        }
+
+
+        .ad-space-bottom {
+            background: #f5f5f5;
+            border: 1px dashed #e5e5e5;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 24px;
+            min-height: 90px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .footer {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .footer-text {
+            font-size: 12px;
+            color: #999999;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .ad-space-bottom {
+                background: #000000;
+                border-color: #000000;
+            }
+
+            .footer {
+                border-color: #333333;
+            }
+
+            .footer-text {
+                color: #666666;
+            }
+        }
+
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(8px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            border-radius: 16px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .modal-content {
+                background: #1a1a1a;
+                border: 1px solid #333333;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid #e5e5e5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: #ffffff;
+            border-radius: 16px 16px 0 0;
+            z-index: 1;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .modal-header {
+                background: #1a1a1a;
+                border-color: #333333;
+            }
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #000000;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .modal-title {
+                color: #ffffff;
+            }
+        }
+
+        .modal-close {
+            width: 32px;
+            height: 32px;
+            border: none;
+            background: #f5f5f5;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #666666;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: #e5e5e5;
+            color: #000000;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .modal-close {
+                background: #262626;
+                color: #999999;
+            }
+
+            .modal-close:hover {
+                background: #333333;
+                color: #ffffff;
+            }
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .modal-link-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px;
+            background: #f5f5f5;
+            border: 1px solid #e5e5e5;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            color: #000000;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .modal-link-item:hover {
+            background: #eeeeee;
+            border-color: #d4d4d4;
+            transform: translateX(5px);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .modal-link-item {
+                background: #262626;
+                border-color: #333333;
+                color: #ffffff;
+            }
+
+            .modal-link-item:hover {
+                background: #2d2d2d;
+                border-color: #404040;
+            }
+        }
+
+        .modal-link-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            font-size: 16px;
+        }
+
+        .modal-link-text {
+            flex: 1;
+        }
+
+        .modal-link-arrow {
+            color: #999999;
+            font-size: 18px;
+        }
+
+        .modal-description {
+            font-size: 13px;
+            color: #666666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            .modal-description {
+                color: #999999;
+            }
+        }
+
+
+        @media (max-width: 480px) {
+            body {
+                padding: 24px 16px;
+            }
+
+            .username {
+                font-size: 20px;
+            }
+
+            .link-item {
+                padding: 14px 16px;
+                font-size: 14px;
+            }
+
+            .ad-space,
+            .ad-space-bottom {
+                min-height: 80px;
+                padding: 16px;
+            }
+        }
+
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header, .ad-space, .links, .ad-space-bottom, .footer {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .links { animation-delay: 0.1s; }
+        .ad-space-bottom { animation-delay: 0.2s; }
+        .footer { animation-delay: 0.3s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="header">
+            <img src="https://z.zzpi.cc/D0REvJ.jpg" alt="Profile" class="profile-img">
+           <h1 class="username">koleksi Cosplayer&OnlyFans</h1>
+            <span class="verified">✓ Verified</span>
+            <p class="bio">KUMPULAN ASUPAN COSPLAYER,JAVUNCEN,IND,FULL DURASI,</p>
+            <p class="bio">JANGAN LUPA JOIN TELEGRAM VIDEONYA LEBIH LENGKAP LEBIH MANTEP</p>
+            <p class="bio">SUBSCRIBE MY YOUTUBE CHANNEL BIAR GA KETINGGALAN VIDEO SELANJUTNYA</p>
+        </div>
+
+
+        <div class="ad-space" id="ad-top">
+            <script type="text/javascript">
+  atOptions = {
+   'key' : '',
+   'format' : 'iframe',
+   'height' : 50,
+   'width' : 320,
+   'params' : {}
+  };
+</script>
+<script
+  type="text/javascript"
+  src=""
+></script>
+
+            <div class="ad-placeholder"></div>
+        </div>
+
+
+        <div class="links">
+
+            <div class="notepad-box">
+                <div class="notepad-header">
+                    <span class="notepad-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+                        </svg>
+                    </span>
+                    <span class="notepad-title">Link Yang Kalian Cari</span>
+                </div>
+                <div class="notepad-links">
+
+                    <a href="https://cosplay099.blogspot.com" class="notepad-link" target="_blank" onclick="trackClick('link1')">
+                        <span class="notepad-link-text">Koleksi Cosplayer OnlyFans Vip
+                     </span>
+                    </a>
+
+
+                    <a href="" class="notepad-link" target="_blank" onclick="trackClick('link2')">
+                        <span class="notepad-link-text">Koleksi Jav Vip</span>
+                    </a>
+
+
+                    <a href="" class="notepad-link" target="_blank" onclick="trackClick('link3')">
+                        <span class="notepad-link-text">koleksi Game H Vip</span>
+                    </a>
+
+
+                    <a href="" class="notepad-link" target="_blank" onclick="trackClick('link4')">
+                        <span class="notepad-link-text">koleksi H Anime Vip</span>
+                    </a>
+                </div>
+            </div>
+
+
+            <a href="https://t.me/+omRrE3s2uOAyZDJl" class="link-item telegram-link" target="_blank" onclick="trackClick('telegram')">
+                <span class="link-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 0 0-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z""/>
+                    </svg>
+                </span>
+                <span class="link-text">Join Telegram Group</span>
+            </a>
+
+            <a href="https://youtube.com/@kilananay-n2l?si=ojDVfZSTt-doR-gm" class="link-item youtube-link" target="_blank" onclick="trackClick('youtube')">
+                <span class="link-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                    </svg>
+                </span>
+                <span class="link-text">Subscribe YouTube Channel</span>
+            </a>
+        </div>
+
+        <div class="ad-space-bottom" id="ad-bottom">
+            <script type="text/javascript">
+  atOptions = {
+   'key' : '20d7946122971778028eb0e0650e5d1a',
+   'format' : 'iframe',
+   'height' : 250,
+   'width' : 300,
+   'params' : {}
+  };
+</script>
+<script
+  type="text/javascript"
+  src="//"
+></script>
+
+            <div class="ad-placeholder"></div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            <p class="footer-text">© 2025  koleksi terbaru</p>
+        </div>
+    </div>
+
+
+    <script>
+
+
+        var popunderShown = false;
+
+        function showPopunder() {
+            if (popunderShown) return;
+
+
+            popunderShown = true;
+        }
+
+
+        document.addEventListener('click', function() {
+            if (!popunderShown) {
+                showPopunder();
+            }
+        }, { once: true });
+      
+    </script>
+
+    </script>
+   <script
+  type="text/javascript"
+  src="//"
+></script>
+
+<script defer src="" data-cf-beacon='{"version":"2024.11.0","token":"7840be33c22a43febd7274fd05972cb2","r":1,"server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
